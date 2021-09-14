@@ -1,8 +1,13 @@
+import {REGISTRATION_YEAR} from '../variables/variables'
+
 export function getGroupsUsers(payload) {
-    let GroupsUsers = {};
+    const groupsUsers = {};
     for (const user of payload) {
-        GroupsUsers["UpTo" + Math.ceil((user.registered.age / 10))].push(user)
+        const currentGroup = "UpTo" + Math.ceil((user.registered.age / REGISTRATION_YEAR))
+        if ( !groupsUsers[currentGroup]) {
+            groupsUsers[currentGroup] = []
+        }
+        groupsUsers[currentGroup].push(user)
     }
-    // return GroupsUsers
-    console.log(GroupsUsers)
+    return groupsUsers
 }

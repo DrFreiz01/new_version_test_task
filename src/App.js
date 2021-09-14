@@ -1,5 +1,6 @@
 import React from 'react';
 import {getGroupsUsers} from './utils/utils';
+import UserList from './Components/UserList';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -32,7 +33,9 @@ export default class App extends React.Component {
     }
 
     render() {
-        const {error, isLoaded} = this.state;
+        const {error, isLoaded, groupsUsers} = this.state;
+
+        console.log(groupsUsers)
 
         if (error) {
             return <div>Ошибка: {error.message}</div>;
@@ -48,8 +51,11 @@ export default class App extends React.Component {
             )
         }
         return (
-            <div>
+            <div className='main'>
+                <div className=''>
 
+                </div>
+                <UserList />
             </div>
         );
     }
