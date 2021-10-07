@@ -1,6 +1,8 @@
 import React from 'react';
 import {getGroupsUsers} from './utils/utils';
-import UserList from './Components/UserList';
+import UsersList from './Components/UsersList';
+import Search from './Components/Search';
+import FavoritesUsersList from "./Components/FavoritesUsersList";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -18,6 +20,7 @@ export default class App extends React.Component {
             .then(res => res.json())
             .then(
                 (payload) => {
+                    console.log(payload.results)
                     this.setState({
                         isLoaded: true,
                         groupsUsers: getGroupsUsers(payload.results)
@@ -52,10 +55,11 @@ export default class App extends React.Component {
         }
         return (
             <div className='main'>
-                <div className=''>
-
+                <Search />
+                <div className='main__lists'>
+                    <UsersList groupsUsers={groupsUsers} />
+                    <FavoritesUsersList />
                 </div>
-                <UserList />
             </div>
         );
     }
