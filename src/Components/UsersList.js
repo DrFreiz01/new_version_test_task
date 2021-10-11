@@ -17,7 +17,7 @@ export default function UsersList(props) {
             usersCards.push(<UserCard key={item.id} value={item} />)
         })
         cardsGroupsUsers.push(
-            <div className='asd'>
+            <div id={i} className='asd'>
                 <p>Группа до {i}</p>
                 {usersCards}
             </div>
@@ -26,6 +26,12 @@ export default function UsersList(props) {
 
     return (
         <div className='main__lists__user-list'>
+
+            <div className="main__lists__user-list__buttons">
+                <a href="#UpTo2"><button>1</button></a>
+                <button>2</button>
+                <button>3</button>
+            </div>
             {cardsGroupsUsers}
         </div>
     )

@@ -51,3 +51,7 @@ code {
 .asd {
   margin-bottom: 40px;
 }
+
+.main__lists__user-list__buttons {
+  display: flex;
+}

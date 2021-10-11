@@ -10,6 +10,7 @@ export default class App extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
+            payloadGroupsUsers: null,
             groupsUsers: null
         };
     }
@@ -23,6 +24,7 @@ export default class App extends React.Component {
                     console.log(payload.results)
                     this.setState({
                         isLoaded: true,
+                        payloadGroupsUsers: getGroupsUsers(payload.results),
                         groupsUsers: getGroupsUsers(payload.results)
                     });
                 },
@@ -37,8 +39,6 @@ export default class App extends React.Component {
 
     render() {
         const {error, isLoaded, groupsUsers} = this.state;
-
-        console.log(groupsUsers)
 
         if (error) {
             return <div>Ошибка: {error.message}</div>;
