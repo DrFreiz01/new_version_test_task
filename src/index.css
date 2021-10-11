@@ -43,7 +43,11 @@ code {
 }
 
 .main__user-card {
-  background-color: orangered;
+  background-color: darkkhaki;
   max-width: 100%;
-  padding: 30px;
+  margin: 15px;
+  padding: 7px;
+}
+.asd {
+  margin-bottom: 40px;
 }

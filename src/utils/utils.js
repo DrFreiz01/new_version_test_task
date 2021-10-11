@@ -1,4 +1,4 @@
-import {INTERVAL_REGISTRATION_YEAR} from '../variables/variables'
+import {INTERVAL_REGISTRATION_YEAR} from '../variables/variables';
 
 export function getGroupsUsers(payload) {
     const groupsUsers = {};
@@ -7,17 +7,19 @@ export function getGroupsUsers(payload) {
         if ( !groupsUsers[currentGroup]) {
             groupsUsers[currentGroup] = []
         }
-        groupsUsers[currentGroup].push(getCurrentFieldsUser(user))
+        groupsUsers[currentGroup].push(getCurrentFieldsUser(user, currentGroup))
     }
+
     return groupsUsers
 }
 
-function getCurrentFieldsUser(user) {
+function getCurrentFieldsUser(user, currentGroup) {
     return ({
         'id': user.login.uuid,
         'full_name': (user.name.first + ' ' + user.name.last),
         'date': user.dob.date.split('T')[0].split('-').reverse().join("."),
         'email': user.email,
-        'photo': user.picture.thumbnail
+        'photo': user.picture.thumbnail,
+        'group': currentGroup
     })
 }

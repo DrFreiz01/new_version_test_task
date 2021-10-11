@@ -1,21 +1,32 @@
 import UserCard from "./UserCard";
 
 export default function UsersList(props) {
-    console.log(props.groupsUsers)
+    const cardsGroupsUsers = [];
+
+    // for (let i in props.groupsUsers) {
+    //     cardsGroupsUsers[i] = [];
+    //     props.groupsUsers[i].map((item) => {
+    //         cardsGroupsUsers[i].push(<UserCard value={item} />)
+    //     })
+    //
+    // }
 
     for (let i in props.groupsUsers) {
-        props.groupsUsers[i].map((item, index) => {
-                <UserCard value={item} />
+        const usersCards = [];
+        props.groupsUsers[i].map((item) => {
+            usersCards.push(<UserCard key={item.id} value={item} />)
         })
+        cardsGroupsUsers.push(
+            <div className='asd'>
+                <p>Группа до {i}</p>
+                {usersCards}
+            </div>
+        )
     }
-
-    // for (let i = 1; i <  )
-
-    console.log(props.groupsUsers)
 
     return (
         <div className='main__lists__user-list'>
-
+            {cardsGroupsUsers}
         </div>
     )
 }

@@ -10,7 +10,7 @@ export default class App extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            groupsUsers: []
+            groupsUsers: null
         };
     }
 
