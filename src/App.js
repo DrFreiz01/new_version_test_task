@@ -10,8 +10,8 @@ export default class App extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            payloadGroupsUsers: null,
-            groupsUsers: null
+            payloadUsersGroups: null,
+            usersGroups: null
         };
     }
 
@@ -22,10 +22,11 @@ export default class App extends React.Component {
             .then(
                 (payload) => {
                     console.log(payload.results)
+                    const  allUsersListInGroups = getGroupsUsers(payload.results)
                     this.setState({
                         isLoaded: true,
-                        payloadGroupsUsers: getGroupsUsers(payload.results),
-                        groupsUsers: getGroupsUsers(payload.results)
+                        payloadUsersGroups: allUsersListInGroups,
+                        usersGroups: allUsersListInGroups
                     });
                 },
                 (error) => {
@@ -38,8 +39,8 @@ export default class App extends React.Component {
     }
 
     render() {
-        const {error, isLoaded, groupsUsers} = this.state;
-
+        const {error, isLoaded, usersGroups} = this.state;
+        console.log(usersGroups)
         if (error) {
             return <div>Ошибка: {error.message}</div>;
         }
@@ -57,7 +58,7 @@ export default class App extends React.Component {
             <div className='main'>
                 <Search />
                 <div className='main__lists'>
-                    <UsersList groupsUsers={groupsUsers} />
+                    <UsersList usersGroups={usersGroups} />
                     <FavoritesUsersList />
                 </div>
             </div>

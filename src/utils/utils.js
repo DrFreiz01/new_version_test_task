@@ -1,7 +1,7 @@
 import {INTERVAL_REGISTRATION_YEAR} from '../variables/variables';
 
 export function getGroupsUsers(payload) {
-    const groupsUsers = {};
+    const groupsUsers = [];
     for (const user of payload) {
         const currentGroup = "UpTo" + Math.ceil((user.registered.age / INTERVAL_REGISTRATION_YEAR))
         if ( !groupsUsers[currentGroup]) {
